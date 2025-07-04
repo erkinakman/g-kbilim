@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anne Ben Gökbilimci Oldum - Kutup Yıldızı ve Güneşle Konum Belirleme</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .star-bg {
+            background-image: radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+                            radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+                            radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+                            radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+        }
+        
+        .constellation-line {
+            stroke: #ffd700;
+            stroke-width: 2;
+            fill: none;
+        }
+        
+        .star {
+            fill: #ffffff;
+            filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+        }
+        
+        .glow {
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="star-bg">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-indigo-900 to-purple-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">
+                    <i class="fas fa-star text-yellow-400 mr-4"></i>
+                    Anne Ben Gökbilimci Oldum
+                    <i class="fas fa-star text-yellow-400 ml-4"></i>
+                </h1>
+                <p class="text-xl md:text-2xl mb-6">Kutup Yıldızı ve Güneşle Konum Belirleme Teknikleri</p>
+                <div class="bg-yellow-400 text-purple-900 px-6 py-3 rounded-full inline-block font-semibold">
+                    <i class="fas fa-users mr-2"></i>
+                    Teknolojik Çocuklar Takımı
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Ana İçerik -->
+    <main class="container mx-auto px-4 py-8">
+        
+        <!-- Proje Tanıtımı -->
+        <section class="bg-white rounded-3xl shadow-2xl p-8 mb-8 card-hover">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-4">
+                    <i class="fas fa-telescope mr-3"></i>
+                    Projemizi Keşfedin
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <p class="text-lg leading-relaxed text-gray-700 mb-6">
+                        Biz Teknolojik Çocuklar takımı olarak, bir gün gece gökyüzüne bakarken şunu sorduk: 
+                        <strong class="text-purple-600">"Kaybolsak yönümüzü nasıl buluruz?"</strong>
+                    </p>
+                    <p class="text-lg leading-relaxed text-gray-700 mb-6">
+                        İşte bu meraktan doğdu projemiz. Hepimiz navigasyona alıştık ama atalarımız gökyüzünü pusula gibi kullanıyordu. 
+                        Kutup Yıldızı her zaman kuzeyi gösteriyor, Güneş'in gölgesi saati ve boylamı anlatıyor.
+                    </p>
+                    <p class="text-lg leading-relaxed text-gray-700">
+                        Biz de bu eski bilgeliği modern araçlarla birleştirip arkadaşlarımıza öğretmek için buradayız.
+                    </p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-gradient-to-br from-indigo-100 to-purple-100 rounded-2xl p-6">
+                        <i class="fas fa-compass text-6xl text-purple-600 mb-4"></i>
+                        <h3 class="text-xl font-bold text-purple-800 mb-2">Eski Bilgelik</h3>
+                        <p class="text-purple-600">Modern Teknoloji</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ne Yapıyoruz -->
+        <section class="bg-white rounded-3xl shadow-2xl p-8 mb-8 card-hover">
+            <h2 class="text-3xl font-bold text-center gradient-text mb-8">
+                <i class="fas fa-cogs mr-3"></i>
+                Ne Yapıyoruz?
+            </h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 text-center">
+                    <i class="fas fa-star text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="font-bold text-blue-800 mb-2">Kutup Yıldızı</h3>
+                    <p class="text-sm text-blue-600">Yüksekliğinden enlem hesaplama</p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl p-6 text-center">
+                    <i class="fas fa-sun text-4xl text-yellow-600 mb-4"></i>
+                    <h3 class="font-bold text-yellow-800 mb-2">Güneş Gölgesi</h3>
+                    <p class="text-sm text-yellow-600">Gölgeden boylam bulma</p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 text-center">
+                    <i class="fab fa-arduino text-4xl text-green-600 mb-4"></i>
+                    <h3 class="font-bold text-green-800 mb-2">Arduino</h3>
+                    <p class="text-sm text-green-600">Ölçüm modelleme</p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6 text-center">
+                    <i class="fas fa-gamepad text-4xl text-purple-600 mb-4"></i>
+                    <h3 class="font-bold text-purple-800 mb-2">Scratch</h3>
+                    <p class="text-sm text-purple-600">Dijital simülasyonlar</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kutup Yıldızı Tekniği -->
+        <section class="bg-white rounded-3xl shadow-2xl p-8 mb-8 card-hover">
+            <h2 class="text-3xl font-bold text-center gradient-text mb-8">
+                <i class="fas fa-star mr-3"></i>
+                Kutup Yıldızı ile Enlem Belirleme
+            </h2>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div>
+                    <div class="bg-gradient-to-br from-indigo-900 to-purple-900 rounded-xl p-6 mb-6">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABLAAAASwCAYAAADJb0xtAAAACXBIWXMAAAsTAAALEwEAmpwYAAAKT2lDQ1BQaG90b3Nob3AgSUNDIHByb3ZpbGUAAHjanVNnVFPpFj333vRCS4iAlEtvUhUIIFJCi4AUkSYqIQkQSoghodkVUcERRUUEG8igiAOOjoCMFVEsDIoK2AfkIaKOg6OIisr74Xuja9a89+bN/rXXPues852zzwfACAyWSDNRNYAMqUIeEeCDx8TG4eQuQIEKJHAAEAizZCFz/SMBAPh+PDwrIsAHvgABeNMLCADATZvAMByH/w/qQplcAYCEAcB0kThLCIAUAEB6jkKmAEBGAYCdmCZTAKAEAGDLY2LjAFAtAGAnf+bTAICd+Jl7AQBblCEVAaCRACATZYhEAGg7AKzPVopFAFgwABRmS8Q5ANgtADBJV2ZIALC3AMDOEAuyAAgMADBRiIUpAAR7AGDIIyN4AISZABRG8lc88SuuEOcqAAB4mbI8uSQ5RYFbCC1xB1dXLh4ozkkXKxQ2YQJhmkAuwnmZGTKBNA/g88wAAKCRFRHgg/P9eM4Ors7ONo62Dl8t6r8G/yJiYuP+5c+rcEAAAOF0ftH+LC+zGoA7BoBt/qIl7gRoXgugdfeLZrIPQLUAoOnaV/Nw+H48PEWhkLnZ2eXk5NhKxEJbYcpXff5nwl/AV/1s+X48/Pf14L7iJIEyXYFHBPjgwsz0TKUcz5IJhGLc5o9H/LcL//wd0yLESWK5WCoU41EScY5EmozzMqUiiUKSKcUl0v9k4t8s+wM+3zUAsGo+AXuRLahdYwP2SycQWHTA4vcAAPK7b8HUKAgDgGiD4c93/+8//UegJQCAZkmScQAAXkQkLlTKsz/HCAAARKCBKrBBG/TBGCzABhzBBdzBC/xgNoRCJMTCQhBCCmSAHHJgKayCQiiGzbAdKmAv1EAdNMBRaIaTcA4uwlW4Dj1wD/phCJ7BKLyBCQRByAgTYSHaiAFiilgjjggXmYX4IcFIBBKLJCDJiBRRIkuRNUgxUopUIFVIHfI9cgI5h1xGupE7yAAygvyGvEcxlIGyUT3UDLVDuag3GoRGogvQZHQxmo8WoJvQcrQaPYw2oefQq2gP2o8+Q8cwwOgYBzPEbDAuxsNCsTgsCZNjy7EirAyrxhqwVqwDu4n1Y8+xdwQSgUXACTYEd0IgYR5BSFhMWE7YSKggHCQ0EdoJNwkDhFHCJyKTqEu0JroR+cQYYjIxh1hILCPWEo8TLxB7iEPENyQSiUMyJ7mQAkmxpFTSEtJG0m5SI+ksqZs0SBojk8naZGuyBzmULCAryIXkneTD5DPkG+Qh8lsKnWJAcaT4U+IoUspqShnlEOU05QZlmDJBVaOaUt2ooVQRNY9aQq2htlKvUYeoEzR1mjnNgxZJS6WtopXTGmgXaPdpr+h0uhHdlR5Ol9BX0svpR+iX6AP0dwwNhhWDx4hnKBmbGAcYZxl3GK+YTKYZ04sZx1QwNzHrmOeZD5lvVVgqtip8FZHKCpVKlSaVGyovVKmqpqreqgtV81XLVI+pXlN9rkZVM1PjqQnUlqtVqp1Q61MbU2epO6iHqmeob1Q/pH5Z/YkGWcNMw09DpFGgsV/jvMYgC2MZs3gsIWsNq4Z1gTXEJrHN2Xx2KruY/R27iz2qqaE5QzNKM1ezUvOUZj8H45hx+Jx0TgnnKKeX836K3hTvKeIpG6Y0TLkxZVxrqpaXllirSKtRq0frvTau7aedpr1Fu1n7gQ5Bx0onXCdHZ4/OBZ3nU9lT3acKpxZNPTr1ri6qa6UbobtEd79up+6Ynr5egJ5Mb6feeb3n+hx9L/1U/W36p/VHDFgGswwkBtsMzhg8xTVxbzwdL8fb8VFDXcNAQ6VhlWGX4SU" alt="Kutup Yıldızı Haritası" class="w-full rounded-lg">
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold text-indigo-800 mb-4">Nasıl Çalışır?</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-indigo-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">1</div>
+                            <p class="text-gray-700"><strong>Kutup Yıldızı'nı bul:</strong> Büyük Ayı takımyıldızını kullanarak Kutup Yıldızı'nı (Polaris) tespit et.</p>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-indigo-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">2</div>
+                            <p class="text-gray-700"><strong>Açı ölç:</strong> Açıölçer kullanarak Kutup Yıldızı'nın ufuktan yüksekliğini ölç.</p>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-indigo-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">3</div>
+                            <p class="text-gray-700"><strong>Enlem hesapla:</strong> Ölçtüğün açı = Bulunduğun yerin enlemi</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 mt-6">
+                        <h4 class="font-bold text-indigo-800 mb-3">
+                            <i class="fas fa-calculator mr-2"></i>
+                            Örnek Hesaplama
+                        </h4>
+                        <div class="bg-white rounded-lg p-4">
+                            <p class="text-sm text-gray-600 mb-2">Kutup Yıldızı'nın yüksekliği: <strong class="text-indigo-600">40°</strong></p>
+                            <p class="text-sm text-gray-600 mb-2">Sonuç: <strong class="text-indigo-600">40° Kuzey enlemi</strong></p>
+                            <p class="text-xs text-gray-500">Bu, İstanbul'un enlemine yakın bir değerdir!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Güneş Gölgesi Tekniği -->
+        <section class="bg-white rounded-3xl shadow-2xl p-8 mb-8 card-hover">
+            <h2 class="text-3xl font-bold text-center gradient-text mb-8">
+                <i class="fas fa-sun mr-3"></i>
+                Güneş Gölgesi ile Boylam Belirleme
+            </h2>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-yellow-700 mb-4">Adım Adım Uygulama</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-yellow-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">1</div>
+                            <p class="text-gray-700"><strong>Çubuk yerleştir:</strong> Düz zemine dik bir çubuk koy.</p>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-yellow-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">2</div>
+                            <p class="text-gray-700"><strong>En kısa gölgeyi bekle:</strong> Güneş tepe noktasında olduğunda gölge en kısa olur.</p>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-yellow-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">3</div>
+                            <p class="text-gray-700"><strong>Yerel öğle saatini not et:</strong> Bu an yerel öğle vaktindir.</p>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-yellow-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">4</div>
+                            <p class="text-gray-700"><strong>GMT ile karşılaştır:</strong> Greenwich saati ile farkı hesapla.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-gradient-to-br from-yellow-100 to-orange-100 rounded-xl p-6">
+                        <h4 class="font-bold text-yellow-800 mb-4">
+                            <i class="fas fa-clock mr-2"></i>
+                            Zaman - Boylam İlişkisi
+                        </h4>
+                        
+                        <div class="space-y-3">
+                            <div class="bg-white rounded-lg p-3">
+                                <p class="text-sm font-semibold text-yellow-700">1 saat = 15° boylam</p>
+                                <p class="text-xs text-gray-600">Dünya 24 saatte 360° döner</p>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg p-3">
+                                <p class="text-sm font-semibold text-yellow-700">Örnek:</p>
+                                <p class="text-xs text-gray-600">Yerel öğle: 14:00, GMT: 12:00</p>
+                                <p class="text-xs text-gray-600">Fark: 2 saat = 30° Doğu</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 text-center">
+                            <div class="inline-flex items-center bg-yellow-200 rounded-full px-4 py-2">
+                                <i class="fas fa-lightbulb text-yellow-600 mr-2"></i>
+                                <span class="text-sm font-medium text-yellow-800">Doğu: (+), Batı: (-)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Teknoloji Entegrasyonu -->
+        <section class="bg-white rounded-3xl shadow-2xl p-8 mb-8 card-hover">
+            <h2 class="text-3xl font-bold text-center gradient-text mb-8">
+                <i class="fas fa-microchip mr-3"></i>
+                Teknoloji ile Destekliyoruz
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6">
+                    <div class="text-center mb-4">
+                        <i class="fab fa-arduino text-6xl text-green-600"></i>
+                        <h3 class="text-2xl font-bold text-green-800 mt-2">Arduino Projeleri</h3>
+                    </div>
+                    
+                    <ul class="space-y-2 text-green-700">
+                        <li class="flex items-center"><i class="fas fa-check-circle mr-2"></i> Dijital pusula yapımı</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle mr-2"></i> GPS koordinat göstergesi</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle mr-2"></i> Açıölçer simülatörü</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle mr-2"></i> Güneş takip sistemi</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-6">
+                    <div class="text-center mb-4">
+                        <i class="fas fa-gamepad text-6xl text-purple-600"></i>
+                        <h3 class="text-2xl font-bold text-purple-800 mt-2">Scratch Oyunları</h3>
+                    </div>
+                    
+                    <ul class="space-y-2 text-purple-700">
+                        <li class="flex items-center"><i class="fas fa-check-circle mr-2"></i> Sanal gökyüzü simülasyonu</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle mr-2"></i> Koordinat bulma oyunu</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle mr-2"></i> Takımyıldız eşleştirme</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle mr-2"></i> Zaman dilimi hesaplayıcı</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Toplumsal Katkı -->
+        <section class="bg-white rounded-3xl shadow-2xl p-8 mb-8 card-hover">
+            <h2 class="text-3xl font-bold text-center gradient-text mb-8">
+                <i class="fas fa-heart mr-3"></i>
+                Toplumsal Katkımız
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="text-center p-6 bg-gradient-to-br from-red-50 to-pink-50 rounded-xl">
+                    <i class="fas fa-child text-4xl text-red-500 mb-4"></i>
+                    <h3 class="font-bold text-red-700 mb-2">Çocuklarda Bilim Sevgisi</h3>
+                    <p class="text-sm text-red-600">Erken yaşta astronomi ve coğrafya ilgisi geliştiriyoruz</p>
+                </div>
+                
+                <div class="text-center p-6 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl">
+                    <i class="fas fa-eye text-4xl text-blue-500 mb-4"></i>
+                    <h3 class="font-bold text-blue-700 mb-2">Gözlem Yeteneği</h3>
+                    <p class="text-sm text-blue-600">Doğa gözlemi ve analitik düşünme becerisi kazandırıyoruz</p>
+                </div>
+                
+                <div class="text-center p-6 bg-gradient-to-br from-green-50 to-teal-50 rounded-xl">
+                    <i class="fas fa-lightbulb text-4xl text-green-500 mb-4"></i>
+                    <h3 class="font-bold text-green-700 mb-2">Yaratıcı Teknoloji</h3>
+                    <p class="text-sm text-green-600">Teknolojiyi eğitim aracı olarak kullanmayı öğretiyoruz</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Takım Bilgileri -->
+        <section class="bg-white rounded-3xl shadow-2xl p-8 card-hover">
+            <h2 class="text-3xl font-bold text-center gradient-text mb-8">
+                <i class="fas fa-users mr-3"></i>
+                Teknolojik Çocuklar Takımı
+            </h2>
+            
+            <div class="text-center">
+                <div class="bg-gradient-to-r from-indigo-100 to-purple-100 rounded-2xl p-8 mb-6">
+                    <div class="mb-6">
+                        <i class="fas fa-rocket text-6xl text-indigo-600 mb-4"></i>
+                        <h3 class="text-2xl font-bold text-indigo-800">Misyonumuz</h3>
+                    </div>
+                    
+                    <p class="text-lg text-gray-700 mb-6">
+                        Geleneksel navigasyon bilgisini modern teknoloji ile birleştirerek, 
+                        çocukların bilim dünyasına adım atmalarını sağlıyoruz.
+                    </p>
+                    
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-white rounded-lg p-4">
+                            <i class="fas fa-star text-yellow-500 text-2xl mb-2"></i>
+                            <p class="font-semibold text-gray-800">Astronomi Eğitimi</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-4">
+                            <i class="fas fa-map text-green-500 text-2xl mb-2"></i>
+                            <p class="font-semibold text-gray-800">Coğrafya Öğretimi</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-4">
+                            <i class="fas fa-code text-blue-500 text-2xl mb-2"></i>
+                            <p class="font-semibold text-gray-800">Teknoloji Entegrasyonu</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-xl p-6">
+                    <h4 class="text-xl font-bold mb-2">
+                        <i class="fas fa-quote-left mr-2"></i>
+                        "Gökyüzü bizim sınıfsız okulumuzdur"
+                    </h4>
+                    <p class="text-yellow-100">- Teknolojik Çocuklar Takımı</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-indigo-900 to-purple-900 text-white py-8 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-4">
+                <i class="fas fa-star text-yellow-400 text-3xl"></i>
+            </div>
+            <p class="text-lg mb-2">Anne Ben Gökbilimci Oldum</p>
+            <p class="text-purple-200">Teknolojik Çocuklar Takımı © 2024</p>
+            <div class="mt-4 space-x-4">
+                <i class="fas fa-telescope text-yellow-400"></i>
+                <i class="fas fa-star text-yellow-400"></i>
+                <i class="fas fa-compass text-yellow-400"></i>
+                <i class="fas fa-sun text-yellow-400"></i>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
